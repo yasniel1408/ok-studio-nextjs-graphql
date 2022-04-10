@@ -1,15 +1,14 @@
-import Document, { Head, Main, NextScript } from 'next/document';
+import Document, { Head, Html, Main, NextScript } from 'next/document';
 
 class MyDocument extends Document {
   render() {
     return (
-      <html lang="es">
+      <Html lang="es">
         <Head>
           <meta charSet="utf-8" />
           <meta name="theme-color" content="#000000" />
           <link rel="shortcut icon" href="./favicon.ico" />
           <link rel="apple-touch-icon" sizes="76x76" href="./favicon.ico" />
-          {/* Fonts and icons */}
           <link
             href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700"
             rel="stylesheet"
@@ -20,7 +19,7 @@ class MyDocument extends Document {
           <Main />
           <NextScript />
         </body>
-      </html>
+      </Html>
     );
   }
 }

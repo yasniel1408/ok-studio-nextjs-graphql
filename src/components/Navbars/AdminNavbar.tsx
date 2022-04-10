@@ -17,6 +17,7 @@ import {
   Container,
   Media,
 } from 'reactstrap';
+import Image from 'next/image';
 
 function AdminNavbar({ brandText }: { brandText: string }) {
   return (
@@ -44,7 +45,7 @@ function AdminNavbar({ brandText }: { brandText: string }) {
             <DropdownToggle className="pr-0" nav>
               <Media className="align-items-center">
                 <span className="avatar avatar-sm rounded-circle">
-                  <img alt="..." src="./vercel.svg" />
+                  <Image alt="logo" src="/vercel.svg" layout="fill" />
                 </span>
                 <Media className="ml-2 d-none d-lg-block">
                   <span className="mb-0 text-sm font-weight-bold">Jessica Jones</span>

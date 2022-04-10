@@ -4,17 +4,11 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 import {
-  Button,
-  Card,
-  CardHeader,
-  CardBody,
-  CardTitle,
   Collapse,
   DropdownMenu,
   DropdownItem,
   UncontrolledDropdown,
   DropdownToggle,
-  FormGroup,
   Form,
   Input,
   InputGroupText,
@@ -25,12 +19,11 @@ import {
   NavItem,
   NavLink,
   Nav,
-  Progress,
-  Table,
   Container,
   Row,
   Col,
 } from 'reactstrap';
+import { NavbarStyled } from './styled';
 
 function Sidebar(props: any) {
   const router = useRouter();
@@ -73,7 +66,7 @@ function Sidebar(props: any) {
     </NavbarBrand>
   );
   return (
-    <Navbar
+    <NavbarStyled
       className="navbar-vertical fixed-left navbar-light bg-white"
       expand="md"
       id="sidenav-main"
@@ -234,7 +227,7 @@ function Sidebar(props: any) {
           </Nav>
         </Collapse>
       </Container>
-    </Navbar>
+    </NavbarStyled>
   );
 }
 
