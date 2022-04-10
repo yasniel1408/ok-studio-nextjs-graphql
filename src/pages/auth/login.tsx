@@ -13,7 +13,11 @@ import {
   Row,
   Col,
 } from 'reactstrap';
+import Image from 'next/image';
 import Auth from '../../layouts/Auth';
+
+import githubImage from '../../assets/img/icons/common/github.svg';
+import googleImage from '../../assets/img/icons/common/google.svg';
 
 function Login() {
   return (
@@ -31,7 +35,7 @@ function Login() {
               onClick={(e) => e.preventDefault()}
             >
               <span className="btn-inner--icon">
-                <img alt="..." src={require('../../assets/img/icons/common/github.svg')} />
+                <Image width={25} height={25} alt="..." src={githubImage} />
               </span>
               <span className="btn-inner--text">Github</span>
             </Button>
@@ -42,7 +46,7 @@ function Login() {
               onClick={(e) => e.preventDefault()}
             >
               <span className="btn-inner--icon">
-                <img alt="..." src={require('../../assets/img/icons/common/google.svg')} />
+                <Image width={25} height={25} alt="..." src={googleImage} />
               </span>
               <span className="btn-inner--text">Google</span>
             </Button>
