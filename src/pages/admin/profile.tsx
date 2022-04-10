@@ -1,4 +1,3 @@
-/* eslint-disable global-require */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import {
   Button,
@@ -12,8 +11,11 @@ import {
   Row,
   Col,
 } from 'reactstrap';
+import Image from 'next/image';
 import UserHeader from '../../components/Headers/UserHeader';
 import Admin from '../../layouts/Admin';
+
+import avatar from '../../assets/img/theme/team-4-800x800.jpg';
 
 function Profile() {
   return (
@@ -28,10 +30,12 @@ function Profile() {
                 <Col className="order-lg-2" lg="3">
                   <div className="card-profile-image">
                     <a href="#pablo" onClick={(e) => e.preventDefault()}>
-                      <img
-                        alt="..."
+                      <Image
+                        width={150}
+                        height={150}
+                        alt="avatar"
                         className="rounded-circle"
-                        src={require('../../assets/img/theme/team-4-800x800.jpg')}
+                        src={avatar}
                       />
                     </a>
                   </div>

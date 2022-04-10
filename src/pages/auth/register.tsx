@@ -12,7 +12,11 @@ import {
   Row,
   Col,
 } from 'reactstrap';
+import Image from 'next/image';
 import Auth from '../../layouts/Auth';
+
+import githubImage from '../../assets/img/icons/common/github.svg';
+import googleImage from '../../assets/img/icons/common/google.svg';
 
 function Register() {
   return (
@@ -30,7 +34,7 @@ function Register() {
               onClick={(e) => e.preventDefault()}
             >
               <span className="btn-inner--icon">
-                <img alt="..." src={require('../../assets/img/icons/common/github.svg')} />
+                <Image width={15} height={15} alt="..." src={githubImage} />
               </span>
               <span className="btn-inner--text">Github</span>
             </Button>
@@ -41,7 +45,7 @@ function Register() {
               onClick={(e) => e.preventDefault()}
             >
               <span className="btn-inner--icon">
-                <img alt="..." src={require('../../assets/img/icons/common/google.svg')} />
+                <Image width={15} height={15} alt="..." src={googleImage} />
               </span>
               <span className="btn-inner--text">Google</span>
             </Button>

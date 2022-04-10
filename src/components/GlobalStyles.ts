@@ -22,4 +22,24 @@ export const GlobalStyle = createGlobalStyle`
         *::-webkit-scrollbar-track {
             border-radius: 6px;
         }
+
+
+        .input-group{
+            position: relative !important;
+            div{
+                position: absolute !important;
+                span{
+                    margin-top: 4px !important;
+                    margin-left: 4px !important;
+                }
+            }
+            input{
+                background: transparent;
+                padding-left: 50px !important;
+            }
+            input:focus{
+                background: transparent;
+                padding-left: 50px !important;
+            }
+        }
 `;

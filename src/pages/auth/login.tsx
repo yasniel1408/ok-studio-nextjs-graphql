@@ -35,7 +35,7 @@ function Login() {
               onClick={(e) => e.preventDefault()}
             >
               <span className="btn-inner--icon">
-                <Image width={25} height={25} alt="..." src={githubImage} />
+                <Image width={15} height={15} alt="..." src={githubImage} />
               </span>
               <span className="btn-inner--text">Github</span>
             </Button>
@@ -46,7 +46,7 @@ function Login() {
               onClick={(e) => e.preventDefault()}
             >
               <span className="btn-inner--icon">
-                <Image width={25} height={25} alt="..." src={googleImage} />
+                <Image width={15} height={15} alt="..." src={googleImage} />
               </span>
               <span className="btn-inner--text">Google</span>
             </Button>
