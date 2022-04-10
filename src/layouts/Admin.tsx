@@ -34,7 +34,7 @@ function Admin(props: any) {
         {...props}
         routes={routes}
         logo={{
-          innerLink: '/admin/index',
+          innerLink: '/',
           imgSrc: './vercel.svg',
           imgAlt: '...',
         }}
