@@ -1,12 +1,12 @@
-import Link from 'next/link';
+import Router from 'next/router';
+import { useEffect } from 'react';
 
-const index = () => {
-  return (
-    <div>
-      <Link href="login"> login</Link>
-      <Link href="dashboard"> Dashboard</Link>
-    </div>
-  );
+const Index = () => {
+  useEffect(() => {
+    Router.push('/auth/login');
+  }, []);
+
+  return <div />;
 };
 
-export default index;
+export default Index;

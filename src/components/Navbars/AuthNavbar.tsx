@@ -22,7 +22,7 @@ function AuthNavbar() {
         <Link href="/admin/dashboard" passHref>
           <span>
             <NavbarBrand href="#pablo">
-              <Image width="150rem" height="50rem" alt="..." src={nextjsArgonWhite} />
+              <Image width="170rem" height="50rem" alt="..." src={nextjsArgonWhite} />
             </NavbarBrand>
           </span>
         </Link>
