@@ -2,7 +2,6 @@ import ReactDOM from 'react-dom';
 import App from 'next/app';
 import Head from 'next/head';
 import Router from 'next/router';
-import 'bootstrap/dist/css/bootstrap.css';
 import '../assets/plugins/nucleo/css/nucleo.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import '../assets/css/nextjs-argon-dashboard.min.css';

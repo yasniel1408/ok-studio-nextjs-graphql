@@ -34,7 +34,7 @@ function AuthNavbar() {
             <Row>
               <Col className="collapse-brand" xs="6">
                 <Link href="/admin/dashboard" passHref>
-                  <Image width="10rem" alt="..." src={nextjsArgonBlack} />
+                  <Image width="170rem" height="50rem" alt="..." src={nextjsArgonBlack} />
                 </Link>
               </Col>
               <Col className="collapse-close" xs="6">

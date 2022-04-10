@@ -6,6 +6,7 @@ import routes from '../utils/routes';
 import Sidebar from '../components/Sidebar/Sidebar';
 import AdminNavbar from '../components/Navbars/AdminNavbar';
 import AdminFooter from '../components/Footers/AdminFooter';
+import nextjsArgonBlack from '../assets/img/brand/nextjs_argon_black.png';
 
 function Admin(props: any) {
   const router: NextRouter = useRouter();
@@ -35,7 +36,7 @@ function Admin(props: any) {
         routes={routes}
         logo={{
           innerLink: '/',
-          imgSrc: './vercel.svg',
+          imgSrc: nextjsArgonBlack,
           imgAlt: '...',
         }}
       />

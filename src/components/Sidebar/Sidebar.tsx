@@ -23,8 +23,10 @@ import {
   Row,
   Col,
 } from 'reactstrap';
+import Image from 'next/image';
+import avatar from '../../assets/img/theme/team-4-800x800.jpg';
 
-function Sidebar(props: any) {
+function Sidebar({ routes, logo }: { routes: any; logo: any }) {
   const router = useRouter();
   const [collapseOpen, setCollapseOpen] = React.useState(false);
 
@@ -40,11 +42,11 @@ function Sidebar(props: any) {
     setCollapseOpen(false);
   };
 
-  const createLinks = (routes = [{}]) => {
+  const createLinks = () => {
     return routes.map((prop: any) => {
       return (
         <NavItem key={Date.now()} active={activeRoute(prop.layout + prop.path)}>
-          <Link href={prop.layout + prop.path}>
+          <Link href={prop.layout + prop.path} passHref>
             <NavLink
               href="#pablo"
               active={activeRoute(prop.layout + prop.path)}
@@ -58,10 +60,9 @@ function Sidebar(props: any) {
       );
     });
   };
-  const { routes, logo } = props;
   const navbarBrand = (
     <NavbarBrand href="#pablo" className="pt-0">
-      <img alt={logo.imgAlt} className="navbar-brand-img" src={logo.imgSrc} />
+      <Image alt={logo.imgAlt} className="navbar-brand-img" src={logo.imgSrc} />
     </NavbarBrand>
   );
   return (
@@ -77,7 +78,7 @@ function Sidebar(props: any) {
         </button>
         {/* Brand */}
         {logo && logo.innerLink ? (
-          <Link href={logo.innerLink}>
+          <Link href={logo.innerLink} passHref>
             <span>{navbarBrand}</span>
           </Link>
         ) : null}
@@ -107,7 +108,7 @@ function Sidebar(props: any) {
             <DropdownToggle nav>
               <Media className="align-items-center">
                 <span className="avatar avatar-sm rounded-circle">
-                  <img alt="..." src="./vercel.svg" />
+                  <Image width={40} height={40} alt="..." src={avatar} />
                 </span>
               </Media>
             </DropdownToggle>
@@ -115,25 +116,25 @@ function Sidebar(props: any) {
               <DropdownItem className="noti-title" header tag="div">
                 <h6 className="text-overflow m-0">Welcome!</h6>
               </DropdownItem>
-              <Link href="/admin/profile">
+              <Link href="/admin/profile" passHref>
                 <DropdownItem>
                   <i className="ni ni-single-02" />
                   <span>My profile</span>
                 </DropdownItem>
               </Link>
-              <Link href="/admin/profile">
+              <Link href="/admin/profile" passHref>
                 <DropdownItem>
                   <i className="ni ni-settings-gear-65" />
                   <span>Settings</span>
                 </DropdownItem>
               </Link>
-              <Link href="/admin/profile">
+              <Link href="/admin/profile" passHref>
                 <DropdownItem>
                   <i className="ni ni-calendar-grid-58" />
                   <span>Activity</span>
                 </DropdownItem>
               </Link>
-              <Link href="/admin/profile">
+              <Link href="/admin/profile" passHref>
                 <DropdownItem>
                   <i className="ni ni-support-16" />
                   <span>Support</span>
@@ -154,15 +155,9 @@ function Sidebar(props: any) {
             <Row>
               {logo ? (
                 <Col className="collapse-brand" xs="6">
-                  {logo.innerLink ? (
-                    <Link href={logo.innerLink}>
-                      <img alt={logo.imgAlt} src={logo.imgSrc} />
-                    </Link>
-                  ) : (
-                    <a href={logo.outterLink}>
-                      <img alt={logo.imgAlt} src={logo.imgSrc} />
-                    </a>
-                  )}
+                  <Link href={logo.innerLink} passHref>
+                    <Image width={140} height={40} alt={logo.imgAlt} src={logo.imgSrc} />
+                  </Link>
                 </Col>
               ) : null}
               <Col className="collapse-close" xs="6">
@@ -190,40 +185,10 @@ function Sidebar(props: any) {
             </InputGroup>
           </Form>
           {/* Navigation */}
-          <Nav navbar>{createLinks(routes)}</Nav>
+          <Nav navbar>{createLinks()}</Nav>
           {/* Divider */}
           <hr className="my-3" />
           {/* Heading */}
-          <h6 className="navbar-heading text-muted">Documentation</h6>
-          {/* Navigation */}
-          <Nav className="mb-md-3" navbar>
-            <NavItem>
-              <NavLink href="https://www.creative-tim.com/learning-lab/nextjs/overview/argon-dashboard?ref=njsad-admin-sidebar">
-                <i className="ni ni-spaceship" />
-                Getting started
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="https://www.creative-tim.com/learning-lab/nextjs/colors/argon-dashboard?ref=njsad-admin-sidebar">
-                <i className="ni ni-palette" />
-                Foundation
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="https://www.creative-tim.com/learning-lab/nextjs/avatar/argon-dashboard?ref=njsad-admin-sidebar">
-                <i className="ni ni-ui-04" />
-                Components
-              </NavLink>
-            </NavItem>
-          </Nav>
-          <Nav className="mb-md-3" navbar>
-            <NavItem className="active-pro active">
-              <NavLink href="https://www.creative-tim.com/product/argon-dashboard-pro-react?ref=njsad-admin-sidebar">
-                <i className="ni ni-spaceship" />
-                Upgrade to PRO
-              </NavLink>
-            </NavItem>
-          </Nav>
         </Collapse>
       </Container>
     </Navbar>
