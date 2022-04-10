@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 /* eslint-disable max-len */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
@@ -17,25 +18,22 @@ import {
   Container,
   Media,
 } from 'reactstrap';
-import Image from 'next/image';
 
 function AdminNavbar({ brandText }: { brandText: string }) {
   return (
     <Navbar className="navbar-top navbar-dark" expand="md" id="navbar-main">
       <Container fluid>
         <Link href="/admin/dashboard">
-          <a href="#" className="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block">
-            {brandText}
-          </a>
+          <a className="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block">{brandText}</a>
         </Link>
         <Form className="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
           <FormGroup className="mb-0">
             <InputGroup className="input-group-alternative">
-              <InputGroupText addonType="prepend">
+              <InputGroup addonType="prepend">
                 <InputGroupText>
                   <i className="fas fa-search" />
                 </InputGroupText>
-              </InputGroupText>
+              </InputGroup>
               <Input placeholder="Search" type="text" />
             </InputGroup>
           </FormGroup>
@@ -45,7 +43,7 @@ function AdminNavbar({ brandText }: { brandText: string }) {
             <DropdownToggle className="pr-0" nav>
               <Media className="align-items-center">
                 <span className="avatar avatar-sm rounded-circle">
-                  <Image alt="logo" src="/vercel.svg" layout="fill" />
+                  <img alt="..." src={require('../../assets/img/theme/team-4-800x800.jpg')} />
                 </span>
                 <Media className="ml-2 d-none d-lg-block">
                   <span className="mb-0 text-sm font-weight-bold">Jessica Jones</span>

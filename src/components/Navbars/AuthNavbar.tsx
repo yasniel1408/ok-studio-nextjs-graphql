@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 import Link from 'next/link';
 import {
   UncontrolledCollapse,
@@ -18,7 +19,7 @@ function AuthNavbar() {
         <Link href="/admin/dashboard">
           <span>
             <NavbarBrand href="#pablo">
-              <img alt="..." src="./nextjs_argon_white.png" />
+              <img alt="..." src={require('../../assets/img/brand/nextjs_argon_white.png')} />
             </NavbarBrand>
           </span>
         </Link>
@@ -30,7 +31,7 @@ function AuthNavbar() {
             <Row>
               <Col className="collapse-brand" xs="6">
                 <Link href="/admin/dashboard">
-                  <img alt="..." src="./nextjs_argon_black.png" />
+                  <img alt="..." src={require('../../assets/img/brand/nextjs_argon_black.png')} />
                 </Link>
               </Col>
               <Col className="collapse-close" xs="6">

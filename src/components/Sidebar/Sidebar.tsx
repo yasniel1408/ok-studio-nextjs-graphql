@@ -23,7 +23,6 @@ import {
   Row,
   Col,
 } from 'reactstrap';
-import { NavbarStyled } from './styled';
 
 function Sidebar(props: any) {
   const router = useRouter();
@@ -66,7 +65,7 @@ function Sidebar(props: any) {
     </NavbarBrand>
   );
   return (
-    <NavbarStyled
+    <Navbar
       className="navbar-vertical fixed-left navbar-light bg-white"
       expand="md"
       id="sidenav-main"
@@ -227,7 +226,7 @@ function Sidebar(props: any) {
           </Nav>
         </Collapse>
       </Container>
-    </NavbarStyled>
+    </Navbar>
   );
 }
 

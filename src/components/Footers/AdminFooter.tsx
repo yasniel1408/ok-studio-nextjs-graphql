@@ -1,8 +1,5 @@
-/*eslint-disable*/
 import React from 'react';
-
-// reactstrap components
-import { Container, Row, Col, Nav, NavItem, NavLink } from 'reactstrap';
+import { Row, Col, Nav, NavItem, NavLink } from 'reactstrap';
 
 function AdminFooter() {
   return (
@@ -56,6 +53,7 @@ function AdminFooter() {
 
             <NavItem>
               <NavLink
+                // eslint-disable-next-line max-len
                 href="https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md?ref=njsad-admin-footer"
                 rel="noopener noreferrer"
                 target="_blank"

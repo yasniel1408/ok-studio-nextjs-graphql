@@ -3,7 +3,9 @@ import App from 'next/app';
 import Head from 'next/head';
 import Router from 'next/router';
 import 'bootstrap/dist/css/bootstrap.css';
-import { Fragment } from 'react';
+import '../assets/plugins/nucleo/css/nucleo.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import '../assets/css/nextjs-argon-dashboard.min.css';
 import PageChange from '../components/PageChange/PageChange';
 
 Router.events.on('routeChangeStart', (url) => {
