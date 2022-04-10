@@ -1,6 +1,4 @@
-/* eslint-disable global-require */
 /* eslint-disable max-len */
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import Link from 'next/link';
 import {
@@ -18,13 +16,18 @@ import {
   Container,
   Media,
 } from 'reactstrap';
+import Image from 'next/image';
+
+import avatar from '../../assets/img/theme/team-4-800x800.jpg';
 
 function AdminNavbar({ brandText }: { brandText: string }) {
   return (
     <Navbar className="navbar-top navbar-dark" expand="md" id="navbar-main">
       <Container fluid>
         <Link href="/admin/dashboard">
-          <a className="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block">{brandText}</a>
+          <a href="#." className="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block">
+            {brandText}
+          </a>
         </Link>
         <Form className="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
           <FormGroup className="mb-0">
@@ -43,7 +46,7 @@ function AdminNavbar({ brandText }: { brandText: string }) {
             <DropdownToggle className="pr-0" nav>
               <Media className="align-items-center">
                 <span className="avatar avatar-sm rounded-circle">
-                  <img alt="..." src={require('../../assets/img/theme/team-4-800x800.jpg')} />
+                  <Image alt="avatar" src={avatar} />
                 </span>
                 <Media className="ml-2 d-none d-lg-block">
                   <span className="mb-0 text-sm font-weight-bold">Jessica Jones</span>
@@ -54,25 +57,25 @@ function AdminNavbar({ brandText }: { brandText: string }) {
               <DropdownItem className="noti-title" header tag="div">
                 <h6 className="text-overflow m-0">Welcome!</h6>
               </DropdownItem>
-              <Link href="/admin/profile">
+              <Link href="/admin/profile" passHref>
                 <DropdownItem>
                   <i className="ni ni-single-02" />
                   <span>My profile</span>
                 </DropdownItem>
               </Link>
-              <Link href="/admin/profile">
+              <Link href="/admin/profile" passHref>
                 <DropdownItem>
                   <i className="ni ni-settings-gear-65" />
                   <span>Settings</span>
                 </DropdownItem>
               </Link>
-              <Link href="/admin/profile">
+              <Link href="/admin/profile" passHref>
                 <DropdownItem>
                   <i className="ni ni-calendar-grid-58" />
                   <span>Activity</span>
                 </DropdownItem>
               </Link>
-              <Link href="/admin/profile">
+              <Link href="/admin/profile" passHref>
                 <DropdownItem>
                   <i className="ni ni-support-16" />
                   <span>Support</span>

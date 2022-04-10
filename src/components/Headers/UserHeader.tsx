@@ -9,7 +9,7 @@ function UserHeader() {
       style={{
         minHeight: '600px',
         // eslint-disable-next-line global-require
-        backgroundImage: `url(${require('assets/img/theme/profile-cover.jpg')})`,
+        backgroundImage: `url(${'../../assets/img/theme/profile-cover.jpg'})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center top',
       }}

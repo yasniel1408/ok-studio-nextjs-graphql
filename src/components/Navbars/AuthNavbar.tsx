@@ -1,4 +1,4 @@
-/* eslint-disable global-require */
+import Image from 'next/image';
 import Link from 'next/link';
 import {
   UncontrolledCollapse,
@@ -12,14 +12,17 @@ import {
   Col,
 } from 'reactstrap';
 
+import nextjsArgonWhite from '../../assets/img/brand/nextjs_argon_white.png';
+import nextjsArgonBlack from '../../assets/img/brand/nextjs_argon_black.png';
+
 function AuthNavbar() {
   return (
     <Navbar className="navbar-top navbar-horizontal navbar-dark" expand="md">
       <Container className="px-4">
-        <Link href="/admin/dashboard">
+        <Link href="/admin/dashboard" passHref>
           <span>
             <NavbarBrand href="#pablo">
-              <img alt="..." src={require('../../assets/img/brand/nextjs_argon_white.png')} />
+              <Image width="150rem" height="50rem" alt="..." src={nextjsArgonWhite} />
             </NavbarBrand>
           </span>
         </Link>
@@ -30,8 +33,8 @@ function AuthNavbar() {
           <div className="navbar-collapse-header d-md-none">
             <Row>
               <Col className="collapse-brand" xs="6">
-                <Link href="/admin/dashboard">
-                  <img alt="..." src={require('../../assets/img/brand/nextjs_argon_black.png')} />
+                <Link href="/admin/dashboard" passHref>
+                  <Image width="10rem" alt="..." src={nextjsArgonBlack} />
                 </Link>
               </Col>
               <Col className="collapse-close" xs="6">
@@ -44,7 +47,7 @@ function AuthNavbar() {
           </div>
           <Nav className="ml-auto" navbar>
             <NavItem>
-              <Link href="/admin/dashboard">
+              <Link href="/admin/dashboard" passHref>
                 <NavLink href="#pablo" className="nav-link-icon">
                   <i className="ni ni-planet" />
                   <span className="nav-link-inner--text">Dashboard</span>
@@ -52,7 +55,7 @@ function AuthNavbar() {
               </Link>
             </NavItem>
             <NavItem>
-              <Link href="/auth/register">
+              <Link href="/auth/register" passHref>
                 <NavLink href="#pablo" className="nav-link-icon">
                   <i className="ni ni-circle-08" />
                   <span className="nav-link-inner--text">Register</span>
@@ -60,7 +63,7 @@ function AuthNavbar() {
               </Link>
             </NavItem>
             <NavItem>
-              <Link href="/auth/login">
+              <Link href="/auth/login" passHref>
                 <NavLink href="#pablo" className="nav-link-icon">
                   <i className="ni ni-key-25" />
                   <span className="nav-link-inner--text">Login</span>
@@ -68,7 +71,7 @@ function AuthNavbar() {
               </Link>
             </NavItem>
             <NavItem>
-              <Link href="/admin/profile">
+              <Link href="/admin/profile" passHref>
                 <NavLink href="#pablo" className="nav-link-icon">
                   <i className="ni ni-single-02" />
                   <span className="nav-link-inner--text">Profile</span>
