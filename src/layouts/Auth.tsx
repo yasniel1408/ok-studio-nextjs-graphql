@@ -1,3 +1,4 @@
+/* eslint-disable react/destructuring-assignment */
 import React, { useEffect } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import AuthFooter from '../components/Footers/AuthFooter';

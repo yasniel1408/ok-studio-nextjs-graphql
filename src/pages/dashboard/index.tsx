@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import {
   Button,
   Card,
@@ -24,7 +24,7 @@ const Dashboard = (props: any) => {
   const toggleNavs = (e: Event, index: number) => {
     e.preventDefault();
     setActiveNav(index);
-    setChartExample1Data('data' + index);
+    setChartExample1Data(`data${index}`);
   };
   return (
     <>
@@ -43,22 +43,14 @@ const Dashboard = (props: any) => {
                   <div className="col">
                     <Nav className="justify-content-end" pills>
                       <NavItem>
-                        <NavLink
-                          className={classnames('py-2 px-3', {
-                            active: activeNav === 1,
-                          })}
-                          href="#pablo"
-                          onClick={(e: any) => toggleNavs(e, 1)}
-                        >
+                        <NavLink className="" href="#pablo" onClick={(e: any) => toggleNavs(e, 1)}>
                           <span className="d-none d-md-block">Month</span>
                           <span className="d-md-none">M</span>
                         </NavLink>
                       </NavItem>
                       <NavItem>
                         <NavLink
-                          className={classnames('py-2 px-3', {
-                            active: activeNav === 2,
-                          })}
+                          className=""
                           data-toggle="tab"
                           href="#pablo"
                           onClick={(e: any) => toggleNavs(e, 2)}

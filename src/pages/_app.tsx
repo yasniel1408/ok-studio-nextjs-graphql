@@ -3,8 +3,8 @@ import App from 'next/app';
 import Head from 'next/head';
 import Router from 'next/router';
 import 'bootstrap/dist/css/bootstrap.css';
-import PageChange from '../components/PageChange/PageChange';
 import { Fragment } from 'react';
+import PageChange from '../components/PageChange/PageChange';
 
 Router.events.on('routeChangeStart', (url) => {
   console.log(`Loading: ${url}`);
@@ -24,7 +24,7 @@ Router.events.on('routeChangeError', () => {
 
 export default class MyApp extends App {
   componentDidMount() {
-    let comment = document.createComment(`Loading....`);
+    const comment = document.createComment(`Loading....`);
     document.insertBefore(comment, document.documentElement);
   }
 
@@ -49,10 +49,11 @@ export default class MyApp extends App {
   render() {
     const { Component, pageProps }: { Component: any; pageProps: any } = this.props;
 
+    // eslint-disable-next-line react/jsx-no-useless-fragment
     const Layout = Component.layout || (({ children }: { children: any }) => <>{children}</>);
 
     return (
-      <Fragment>
+      <>
         <Head>
           <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
           <title>Ok-Studio</title>
@@ -60,7 +61,7 @@ export default class MyApp extends App {
         <Layout>
           <Component {...pageProps} />
         </Layout>
-      </Fragment>
+      </>
     );
   }
 }

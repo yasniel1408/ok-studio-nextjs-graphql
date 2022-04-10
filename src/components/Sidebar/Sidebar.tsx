@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -31,8 +32,6 @@ import {
   Col,
 } from 'reactstrap';
 
-var ps;
-
 function Sidebar(props: any) {
   const router = useRouter();
   const [collapseOpen, setCollapseOpen] = React.useState(false);
@@ -50,9 +49,9 @@ function Sidebar(props: any) {
   };
 
   const createLinks = (routes = [{}]) => {
-    return routes.map((prop: any, key) => {
+    return routes.map((prop: any) => {
       return (
-        <NavItem key={key} active={activeRoute(prop.layout + prop.path)}>
+        <NavItem key={Date.now()} active={activeRoute(prop.layout + prop.path)}>
           <Link href={prop.layout + prop.path}>
             <NavLink
               href="#pablo"
@@ -68,7 +67,7 @@ function Sidebar(props: any) {
     });
   };
   const { routes, logo } = props;
-  let navbarBrand = (
+  const navbarBrand = (
     <NavbarBrand href="#pablo" className="pt-0">
       <img alt={logo.imgAlt} className="navbar-brand-img" src={logo.imgSrc} />
     </NavbarBrand>
@@ -91,7 +90,7 @@ function Sidebar(props: any) {
           </Link>
         ) : null}
         {logo && logo.outterLink ? (
-          <a href={logo.innerLink} target="_blank">
+          <a href={logo.innerLink} target="_blank" rel="noreferrer">
             {navbarBrand}
           </a>
         ) : null}
@@ -116,7 +115,7 @@ function Sidebar(props: any) {
             <DropdownToggle nav>
               <Media className="align-items-center">
                 <span className="avatar avatar-sm rounded-circle">
-                  <img alt="..." src={'./vercel.svg'} />
+                  <img alt="..." src="./vercel.svg" />
                 </span>
               </Media>
             </DropdownToggle>

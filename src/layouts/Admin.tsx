@@ -1,3 +1,4 @@
+/* eslint-disable react/destructuring-assignment */
 import React, { createRef, useEffect } from 'react';
 import { NextRouter, useRouter } from 'next/router';
 import { Container } from 'reactstrap';
@@ -8,7 +9,7 @@ import AdminFooter from '../components/Footers/AdminFooter';
 
 function Admin(props: any) {
   const router: NextRouter = useRouter();
-  let mainContentRef: any = createRef();
+  const mainContentRef: any = createRef();
 
   useEffect(() => {
     if (document && document.scrollingElement) {
@@ -16,9 +17,10 @@ function Admin(props: any) {
       document.scrollingElement.scrollTop = 0;
       mainContentRef.current.scrollTop = 0;
     }
-  }, []);
+  }, [mainContentRef]);
 
   const getBrandText = () => {
+    // eslint-disable-next-line no-restricted-syntax
     for (const element of routes) {
       if (router.route.indexOf(element.layout + element.path) !== -1) {
         return element.name;
