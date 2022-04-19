@@ -51,4 +51,4 @@ function Admin(props: any) {
   );
 }
 
-export default Admin;
+export default React.memo(Admin);

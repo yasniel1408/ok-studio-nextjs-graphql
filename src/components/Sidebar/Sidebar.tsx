@@ -45,7 +45,7 @@ function Sidebar({ routes, logo }: { routes: any; logo: any }) {
   const createLinks = () => {
     return routes.map((prop: any) => {
       return (
-        <NavItem key={Date.now()} active={activeRoute(prop.layout + prop.path)}>
+        <NavItem key={prop.path} active={activeRoute(prop.layout + prop.path)}>
           <Link href={prop.layout + prop.path} passHref>
             <NavLink
               href="#pablo"
@@ -117,28 +117,28 @@ function Sidebar({ routes, logo }: { routes: any; logo: any }) {
                 <h6 className="text-overflow m-0">Welcome!</h6>
               </DropdownItem>
               <Link href="/admin/profile" passHref>
-                <DropdownItem>
-                  <i className="ni ni-single-02" />
-                  <span>My profile</span>
-                </DropdownItem>
+                <a href="#.">
+                  <DropdownItem>
+                    <i className="ni ni-single-02" />
+                    <span>My profile</span>
+                  </DropdownItem>
+                </a>
               </Link>
               <Link href="/admin/profile" passHref>
-                <DropdownItem>
-                  <i className="ni ni-settings-gear-65" />
-                  <span>Settings</span>
-                </DropdownItem>
+                <a href="#.">
+                  <DropdownItem>
+                    <i className="ni ni-settings-gear-65" />
+                    <span>Settings</span>
+                  </DropdownItem>
+                </a>
               </Link>
               <Link href="/admin/profile" passHref>
-                <DropdownItem>
-                  <i className="ni ni-calendar-grid-58" />
-                  <span>Activity</span>
-                </DropdownItem>
-              </Link>
-              <Link href="/admin/profile" passHref>
-                <DropdownItem>
-                  <i className="ni ni-support-16" />
-                  <span>Support</span>
-                </DropdownItem>
+                <a href="#.">
+                  <DropdownItem>
+                    <i className="ni ni-support-16" />
+                    <span>Support</span>
+                  </DropdownItem>
+                </a>
               </Link>
               <DropdownItem divider />
               <DropdownItem href="#pablo" onClick={(e) => e.preventDefault()}>
@@ -195,4 +195,4 @@ function Sidebar({ routes, logo }: { routes: any; logo: any }) {
   );
 }
 
-export default Sidebar;
+export default React.memo(Sidebar);
