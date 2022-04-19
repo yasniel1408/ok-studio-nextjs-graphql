@@ -132,14 +132,6 @@ function Sidebar({ routes, logo }: { routes: any; logo: any }) {
                   </DropdownItem>
                 </a>
               </Link>
-              <Link href="/admin/profile" passHref>
-                <a href="#.">
-                  <DropdownItem>
-                    <i className="ni ni-support-16" />
-                    <span>Support</span>
-                  </DropdownItem>
-                </a>
-              </Link>
               <DropdownItem divider />
               <DropdownItem href="#pablo" onClick={(e) => e.preventDefault()}>
                 <i className="ni ni-user-run" />
