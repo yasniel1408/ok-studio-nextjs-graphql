@@ -27,17 +27,15 @@ function Profile() {
           <Col className="order-xl-2 mb-5 mb-xl-0" xl="4">
             <Card className="card-profile shadow">
               <Row className="justify-content-center">
-                <Col className="order-lg-2" lg="3">
-                  <div className="card-profile-image">
-                    <a href="#pablo" onClick={(e) => e.preventDefault()}>
-                      <Image
-                        width={150}
-                        height={150}
-                        alt="avatar"
-                        className="rounded-circle"
-                        src={avatar}
-                      />
-                    </a>
+                <Col className="order-lg-5" lg="5">
+                  <div style={{ marginTop: '-6rem' }}>
+                    <Image
+                      width={150}
+                      height={150}
+                      alt="avatar"
+                      className="rounded-circle"
+                      src={avatar}
+                    />
                   </div>
                 </Col>
               </Row>
