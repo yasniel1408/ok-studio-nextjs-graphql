@@ -5,6 +5,7 @@ import Router from 'next/router';
 import '../assets/plugins/nucleo/css/nucleo.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import '../assets/css/nextjs-argon-dashboard.min.css';
+import { SessionProvider as AuthProvider } from 'next-auth/react';
 import PageChange from '../components/PageChange/PageChange';
 import { GlobalStyle } from '../components/GlobalStyles';
 
@@ -62,7 +63,9 @@ export default class MyApp extends App {
         </Head>
         <Layout>
           <GlobalStyle />
-          <Component {...pageProps} />
+          <AuthProvider session={pageProps.session}>
+            <Component {...pageProps} />
+          </AuthProvider>
         </Layout>
       </>
     );
