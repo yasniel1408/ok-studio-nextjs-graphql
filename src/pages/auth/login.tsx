@@ -48,7 +48,7 @@ function Login() {
               <input className="custom-control-input" id="customCheckLogin" type="checkbox" />
               <label className="custom-control-label" htmlFor="customCheckLogin">
                 <span className="text-muted">Remember me</span>
-              </label> 
+              </label>
             </div>
             <div className="text-center">
               <Button className="my-4" color="primary" type="button">
