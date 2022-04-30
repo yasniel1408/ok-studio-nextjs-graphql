@@ -14,24 +14,6 @@ export default class MyApp extends App {
     document.insertBefore(comment, document.documentElement);
   }
 
-  static async getInitialProps({
-    Component,
-    router,
-    ctx,
-  }: {
-    Component: any;
-    router: any;
-    ctx: any;
-  }) {
-    let pageProps = {};
-
-    if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx);
-    }
-
-    return { pageProps };
-  }
-
   render() {
     const { Component, pageProps }: { Component: any; pageProps: any } = this.props;
 

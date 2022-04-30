@@ -1,6 +1,4 @@
-import { useMutation } from '@apollo/client';
 import useInputValue from '@hooks/useInputValue';
-import { gql } from 'apollo-boost';
 import {
   Button,
   Card,
@@ -14,24 +12,19 @@ import {
   Col,
 } from 'reactstrap';
 import Auth from '@layouts/Auth';
+import Error from '@components/Error/Error';
+import useLogin from '@hooks/auth/useLogin';
 import { AuthCardHeader } from './components/AuthCardHeader';
 
-const LOGIN = gql`
-  mutation Mutation($input: UserCredentials) {
-    login(input: $input)
-  }
-`;
-
 const Login = () => {
-  const [login, { data, loading, error }] = useMutation(LOGIN);
+  const { userLogin, loading, error } = useLogin();
 
   const email = useInputValue('');
   const password = useInputValue('');
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    const input = { email: email.value, password: password.value };
-    await login({ variables: { input } });
+    await userLogin({ email: email.value, password: password.value });
   };
 
   return (
@@ -46,17 +39,23 @@ const Login = () => {
             <FormGroup className="mb-3">
               <InputGroup className="input-group-alternative">
                 <InputGroup addonType="prepend">
-                  <InputGroupText>
+                  <InputGroupText style={{ zIndex: 2 }}>
                     <i className="ni ni-email-83" />
                   </InputGroupText>
                 </InputGroup>
-                <Input placeholder="Email" type="email" autoComplete="new-email" {...email} />
+                <Input
+                  name="email"
+                  placeholder="Email"
+                  type="email"
+                  autoComplete="new-email"
+                  {...email}
+                />
               </InputGroup>
             </FormGroup>
             <FormGroup>
               <InputGroup className="input-group-alternative">
                 <InputGroup addonType="prepend">
-                  <InputGroupText>
+                  <InputGroupText style={{ zIndex: 2 }}>
                     <i className="ni ni-lock-circle-open" />
                   </InputGroupText>
                 </InputGroup>
@@ -76,9 +75,10 @@ const Login = () => {
             </div>
             <div className="text-center">
               <Button className="my-4" color="primary" type="submit">
-                Sign in
+                {loading ? 'Loading...' : 'Sign in'}
               </Button>
             </div>
+            <Error error={error} />
           </Form>
         </CardBody>
       </Card>
