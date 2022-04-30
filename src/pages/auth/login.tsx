@@ -1,5 +1,5 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import { useMutation } from '@apollo/client';
+import useInputValue from '@hooks/useInputValue';
 import { gql } from 'apollo-boost';
 import {
   Button,
@@ -13,17 +13,26 @@ import {
   Row,
   Col,
 } from 'reactstrap';
-import Auth from '../../layouts/Auth';
+import Auth from '@layouts/Auth';
 import { AuthCardHeader } from './components/AuthCardHeader';
 
 const LOGIN = gql`
-  mutation login($input: UserCredentials!) {
+  mutation Mutation($input: UserCredentials) {
     login(input: $input)
   }
 `;
 
 const Login = () => {
   const [login, { data, loading, error }] = useMutation(LOGIN);
+
+  const email = useInputValue('');
+  const password = useInputValue('');
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    const input = { email: email.value, password: password.value };
+    await login({ variables: { input } });
+  };
 
   return (
     <Col lg="5" md="7">
@@ -33,7 +42,7 @@ const Login = () => {
           <div className="text-center text-muted mb-4">
             <small>Or sign in with credentials</small>
           </div>
-          <Form role="form">
+          <Form role="form" onSubmit={handleSubmit}>
             <FormGroup className="mb-3">
               <InputGroup className="input-group-alternative">
                 <InputGroup addonType="prepend">
@@ -41,7 +50,7 @@ const Login = () => {
                     <i className="ni ni-email-83" />
                   </InputGroupText>
                 </InputGroup>
-                <Input placeholder="Email" type="email" autoComplete="new-email" />
+                <Input placeholder="Email" type="email" autoComplete="new-email" {...email} />
               </InputGroup>
             </FormGroup>
             <FormGroup>
@@ -51,7 +60,12 @@ const Login = () => {
                     <i className="ni ni-lock-circle-open" />
                   </InputGroupText>
                 </InputGroup>
-                <Input placeholder="Password" type="password" autoComplete="new-password" />
+                <Input
+                  placeholder="Password"
+                  type="password"
+                  autoComplete="new-password"
+                  {...password}
+                />
               </InputGroup>
             </FormGroup>
             <div className="custom-control custom-control-alternative custom-checkbox">
@@ -61,7 +75,7 @@ const Login = () => {
               </label>
             </div>
             <div className="text-center">
-              <Button className="my-4" color="primary" type="button">
+              <Button className="my-4" color="primary" type="submit">
                 Sign in
               </Button>
             </div>
