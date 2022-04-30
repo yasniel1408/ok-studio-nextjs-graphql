@@ -1,5 +1,6 @@
 import { gql, useMutation } from '@apollo/client';
 import IUserCredentials from '@interfaces/IUserCredentials';
+import { useEffect } from 'react';
 
 const LOGIN = gql`
   mutation Mutation($input: UserCredentials) {
@@ -10,7 +11,9 @@ const LOGIN = gql`
 const useLogin = () => {
   const [login, { data, loading, error }] = useMutation(LOGIN);
 
-  // falta un effecto para guardar el token en localStorage
+  useEffect(() => {
+    data && console.log(data?.login);
+  }, [data]);
 
   const userLogin = async ({ email, password }: IUserCredentials) => {
     try {

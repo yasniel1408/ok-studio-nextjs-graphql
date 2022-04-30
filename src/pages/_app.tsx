@@ -9,16 +9,10 @@ import LoadingPage from '@components/LoadingPage';
 import ApolloClientContainer from '@containers/ApolloClientContainer';
 
 export default class MyApp extends App {
-  componentDidMount() {
-    const comment = document.createComment(`Loading....`);
-    document.insertBefore(comment, document.documentElement);
-  }
-
   render() {
     const { Component, pageProps }: { Component: any; pageProps: any } = this.props;
-
     // eslint-disable-next-line react/jsx-no-useless-fragment
-    const Layout = Component.layout || (({ children }: { children: any }) => <>{children}</>);
+    const Layout = Component.layout || (({ children }: { children: Node }) => <>{children}</>);
 
     return (
       <>
