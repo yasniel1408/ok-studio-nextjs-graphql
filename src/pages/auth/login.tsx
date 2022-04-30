@@ -1,4 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
+import { useMutation } from '@apollo/client';
+import { gql } from 'apollo-boost';
 import {
   Button,
   Card,
@@ -14,7 +16,15 @@ import {
 import Auth from '../../layouts/Auth';
 import { AuthCardHeader } from './components/AuthCardHeader';
 
-function Login() {
+const LOGIN = gql`
+  mutation login($input: UserCredentials!) {
+    login(input: $input)
+  }
+`;
+
+const Login = () => {
+  const [login, { data, loading, error }] = useMutation(LOGIN);
+
   return (
     <Col lg="5" md="7">
       <Card className="bg-secondary shadow border-0">
@@ -72,7 +82,7 @@ function Login() {
       </Row>
     </Col>
   );
-}
+};
 
 Login.layout = Auth;
 

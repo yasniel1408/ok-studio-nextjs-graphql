@@ -18,7 +18,7 @@ import {
 } from 'reactstrap';
 import Image from 'next/image';
 
-import avatar from '../../assets/img/theme/team-4-800x800.jpg';
+import avatar from '@assets/img/theme/team-4-800x800.jpg';
 
 function AdminNavbar({ brandText }: { brandText: string }) {
   return (

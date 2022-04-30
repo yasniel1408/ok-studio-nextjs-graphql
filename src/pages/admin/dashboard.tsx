@@ -15,8 +15,8 @@ import {
 } from 'reactstrap';
 import classnames from 'classnames';
 import { useState } from 'react';
-import Header from '../../components/Headers/Header';
-import Admin from '../../layouts/Admin';
+import Header from '@components/Headers/Header';
+import Admin from '@layouts/Admin';
 
 const Dashboard = (props: any) => {
   const [activeNav, setActiveNav] = useState(1);

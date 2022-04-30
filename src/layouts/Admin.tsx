@@ -2,10 +2,10 @@
 import React, { createRef, useEffect } from 'react';
 import { NextRouter, useRouter } from 'next/router';
 import { Container } from 'reactstrap';
+import Sidebar from '@components/Sidebar/Sidebar';
+import AdminNavbar from '@components/Navbars/AdminNavbar';
+import AdminFooter from '@components/Footers/AdminFooter';
 import routes from '../utils/routes';
-import Sidebar from '../components/Sidebar/Sidebar';
-import AdminNavbar from '../components/Navbars/AdminNavbar';
-import AdminFooter from '../components/Footers/AdminFooter';
 import nextjsArgonBlack from '../assets/img/brand/nextjs_argon_black.png';
 
 function Admin(props: any) {

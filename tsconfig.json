@@ -1,5 +1,26 @@
 {
   "compilerOptions": {
+    "baseUrl": ".", //estas configuraciones son para que el tsconfig.json sepa donde esta el archivo de entrada
+    "paths": {
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@assets/*": [
+        "src/assets/*"
+      ],
+       "@containers/*": [
+        "src/containers/*"
+      ],
+       "@layouts/*": [
+        "src/layouts/*"
+      ],
+       "@pages/*": [
+        "src/pages/*"
+      ],
+       "@utils/*": [
+        "src/utils/*"
+      ],
+    },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,

@@ -12,10 +12,10 @@ import {
   Col,
 } from 'reactstrap';
 import Image from 'next/image';
-import UserHeader from '../../components/Headers/UserHeader';
-import Admin from '../../layouts/Admin';
+import UserHeader from '@components/Headers/UserHeader';
+import Admin from '@layouts/Admin';
 
-import avatar from '../../assets/img/theme/team-4-800x800.jpg';
+import avatar from '@assets/img/theme/team-4-800x800.jpg';
 
 function Profile() {
   return (

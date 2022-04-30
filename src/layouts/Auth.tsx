@@ -1,8 +1,8 @@
 /* eslint-disable react/destructuring-assignment */
 import React, { useEffect } from 'react';
 import { Container, Row, Col } from 'reactstrap';
-import AuthFooter from '../components/Footers/AuthFooter';
-import AuthNavbar from '../components/Navbars/AuthNavbar';
+import AuthFooter from '@components/Footers/AuthFooter';
+import AuthNavbar from '@components/Navbars/AuthNavbar';
 
 function Auth(props: any) {
   useEffect(() => {

@@ -12,8 +12,8 @@ import {
   Col,
 } from 'reactstrap';
 
-import nextjsArgonWhite from '../../assets/img/brand/nextjs_argon_white.png';
-import nextjsArgonBlack from '../../assets/img/brand/nextjs_argon_black.png';
+import nextjsArgonWhite from '@assets/img/brand/nextjs_argon_white.png';
+import nextjsArgonBlack from '@assets/img/brand/nextjs_argon_black.png';
 
 function AuthNavbar() {
   return (
