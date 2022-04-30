@@ -2,13 +2,15 @@ import React from 'react';
 import { ApolloClient, ApolloProvider, ApolloLink, HttpLink, InMemoryCache } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { onError } from '@apollo/client/link/error';
+import setLogout from '@hooks/auth/helpers/setLogout';
+import getToken from '@hooks/auth/helpers/getToken';
 
 const GRAPHQL_ENDPOINT = 'https://ok-studio-api.herokuapp.com/graphql';
 
 const cache = new InMemoryCache();
 
 const authMiddleware = setContext(async (_, { headers }) => {
-  const token = localStorage.getItem('USER_TOKEN');
+  const token = getToken();
   if (token) {
     return {
       headers: {
@@ -24,7 +26,7 @@ const authMiddleware = setContext(async (_, { headers }) => {
 
 const resetToken = onError(({ networkError }: any) => {
   if (networkError && networkError.name === 'ServerError' && networkError?.statusCode === 401) {
-    localStorage.removeItem('USER_TOKEN');
+    setLogout();
     window.location.href = '/';
   }
 });

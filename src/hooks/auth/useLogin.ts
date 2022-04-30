@@ -1,5 +1,6 @@
 import { gql, useMutation } from '@apollo/client';
 import IUserCredentials from '@interfaces/IUserCredentials';
+import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 
 const LOGIN = gql`
@@ -10,10 +11,14 @@ const LOGIN = gql`
 
 const useLogin = () => {
   const [login, { data, loading, error }] = useMutation(LOGIN);
+  const router = useRouter();
 
   useEffect(() => {
-    data && console.log(data?.login);
-  }, [data]);
+    if (data) {
+      console.log(data?.login);
+      router.push(`/dashboard`);
+    }
+  }, [data, router]);
 
   const userLogin = async ({ email, password }: IUserCredentials) => {
     try {
