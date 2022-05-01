@@ -1,7 +1,8 @@
 import { gql, useMutation } from '@apollo/client';
 import IUserCredentials from '@interfaces/IUserCredentials';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+import useSaveUserStorage from './useSaveUserStorage';
 
 const LOGIN = gql`
   mutation Mutation($input: UserCredentials) {
@@ -12,22 +13,30 @@ const LOGIN = gql`
 const useLogin = () => {
   const [login, { data, loading, error }] = useMutation(LOGIN);
   const router = useRouter();
+  const { storageProcess } = useSaveUserStorage();
+  const [rememberMe, setRememberMe] = useState(false);
 
   useEffect(() => {
     if (data) {
-      console.log(data?.login);
+      storageProcess({
+        authorization: data?.login,
+        rememberMe,
+      });
       router.push(`/dashboard`);
     }
-  }, [data, router]);
+  }, [data, rememberMe, router, storageProcess]);
 
-  const userLogin = async ({ email, password }: IUserCredentials) => {
-    try {
-      const input = { email, password };
-      await login({ variables: { input } });
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  const userLogin = useCallback(
+    ({ email, password, rememberMe: rememberUser }: IUserCredentials) => {
+      try {
+        login({ variables: { input: { email, password } } });
+        setRememberMe(rememberUser);
+      } catch (err) {
+        console.log(err);
+      }
+    },
+    [login],
+  );
 
   return { userLogin, loading, error, data };
 };

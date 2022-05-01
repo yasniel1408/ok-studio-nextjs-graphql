@@ -14,6 +14,7 @@ import {
 import Auth from '@layouts/Auth';
 import Error from '@components/Error/Error';
 import useLogin from '@hooks/auth/useLogin';
+import { useState } from 'react';
 import { AuthCardHeader } from './components/AuthCardHeader';
 
 const Login = () => {
@@ -21,10 +22,11 @@ const Login = () => {
 
   const email = useInputValue('');
   const password = useInputValue('');
+  const [rememberMe, setRememberMe] = useState(false);
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    await userLogin({ email: email.value, password: password.value });
+    await userLogin({ email: email.value, password: password.value, rememberMe });
   };
 
   return (
@@ -68,7 +70,14 @@ const Login = () => {
               </InputGroup>
             </FormGroup>
             <div className="custom-control custom-control-alternative custom-checkbox">
-              <input className="custom-control-input" id="customCheckLogin" type="checkbox" />
+              <input
+                name="rememberMe"
+                className="custom-control-input"
+                id="customCheckLogin"
+                type="checkbox"
+                defaultChecked={rememberMe}
+                onChange={() => setRememberMe(!rememberMe)}
+              />
               <label className="custom-control-label" htmlFor="customCheckLogin">
                 <span className="text-muted">Remember me</span>
               </label>
