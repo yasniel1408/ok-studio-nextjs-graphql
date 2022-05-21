@@ -25,10 +25,12 @@ import {
 } from 'reactstrap';
 import Image from 'next/image';
 import avatar from '@assets/img/theme/team-4-800x800.jpg';
+import useLogout from '@hooks/auth/useLogout';
 
 function Sidebar({ routes, logo }: { routes: any; logo: any }) {
   const router = useRouter();
   const [collapseOpen, setCollapseOpen] = React.useState(false);
+  const { logout } = useLogout();
 
   const activeRoute = (routeName: string) => {
     return router.route.indexOf(routeName) > -1;
@@ -133,7 +135,12 @@ function Sidebar({ routes, logo }: { routes: any; logo: any }) {
                 </a>
               </Link>
               <DropdownItem divider />
-              <DropdownItem href="#pablo" onClick={(e) => e.preventDefault()}>
+              <DropdownItem
+                onClick={(e) => {
+                  e.preventDefault();
+                  logout();
+                }}
+              >
                 <i className="ni ni-user-run" />
                 <span>Logout</span>
               </DropdownItem>

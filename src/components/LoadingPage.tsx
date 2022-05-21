@@ -1,10 +1,10 @@
 import Router from 'next/router';
-import { useLayoutEffect } from 'react';
+import { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import PageChange from '@components/PageChange/PageChange';
 
 const LoadingPage = () => {
-  useLayoutEffect(() => {
+  useEffect(() => {
     Router.events.on('routeChangeStart', (url) => {
       document.body.classList.add('body-page-transition');
       ReactDOM.render(<PageChange path={url} />, document.getElementById('page-transition'));

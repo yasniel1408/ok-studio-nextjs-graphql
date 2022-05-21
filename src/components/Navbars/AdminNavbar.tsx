@@ -19,8 +19,11 @@ import {
 import Image from 'next/image';
 
 import avatar from '@assets/img/theme/team-4-800x800.jpg';
+import useLogout from '@hooks/auth/useLogout';
 
 function AdminNavbar({ brandText }: { brandText: string }) {
+  const { logout } = useLogout();
+
   return (
     <Navbar className="navbar-top navbar-dark" expand="md" id="navbar-main">
       <Container fluid>
@@ -70,7 +73,12 @@ function AdminNavbar({ brandText }: { brandText: string }) {
                 </DropdownItem>
               </Link>
               <DropdownItem divider />
-              <DropdownItem href="#pablo" onClick={(e) => e.preventDefault()}>
+              <DropdownItem
+                onClick={(e) => {
+                  e.preventDefault();
+                  logout();
+                }}
+              >
                 <i className="ni ni-user-run" />
                 <span>Logout</span>
               </DropdownItem>

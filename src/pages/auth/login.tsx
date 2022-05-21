@@ -20,8 +20,8 @@ import { AuthCardHeader } from './components/AuthCardHeader';
 const Login = () => {
   const { userLogin, loading, error } = useLogin();
 
-  const email = useInputValue('');
-  const password = useInputValue('');
+  const email = useInputValue('admin@gmail.com');
+  const password = useInputValue('admin123');
   const [rememberMe, setRememberMe] = useState(false);
 
   const handleSubmit = async (e: any) => {

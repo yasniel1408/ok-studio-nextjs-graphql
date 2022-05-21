@@ -36,7 +36,6 @@
     "graphql": "^16.3.0",
     "jwt-decode": "^3.1.2",
     "next": "^12.1.4",
-    "next-auth": "^4.3.3",
     "next-compose-plugins": "^2.2.1",
     "next-fonts": "^1.5.1",
     "next-images": "^1.8.4",

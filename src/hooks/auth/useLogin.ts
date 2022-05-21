@@ -21,19 +21,16 @@ const useLogin = () => {
       storageProcess({
         authorization: data?.login,
         rememberMe,
+      }).then(() => {
+        router.push(`/dashboard`);
       });
-      router.push(`/dashboard`);
     }
   }, [data, rememberMe, router, storageProcess]);
 
   const userLogin = useCallback(
     ({ email, password, rememberMe: rememberUser }: IUserCredentials) => {
-      try {
-        login({ variables: { input: { email, password } } });
-        setRememberMe(rememberUser);
-      } catch (err) {
-        console.log(err);
-      }
+      login({ variables: { input: { email, password } } });
+      setRememberMe(rememberUser);
     },
     [login],
   );

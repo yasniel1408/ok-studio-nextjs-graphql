@@ -14,7 +14,7 @@ const useSaveUserStorage = () => {
   }) => {
     const token = authorization.replace('Bearer ', '');
     const objectToken: any = jwtDecode(token);
-    const user = objectToken.appUser;
+    const { user } = objectToken;
 
     if (rememberMe) {
       setToken({ token });
