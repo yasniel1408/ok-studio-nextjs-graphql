@@ -2,8 +2,8 @@ import Image from 'next/image';
 import React from 'react';
 import { Button, CardHeader } from 'reactstrap';
 
-import githubImage from '../../../assets/img/icons/common/github.svg';
-import googleImage from '../../../assets/img/icons/common/google.svg';
+import githubImage from '@assets/img/icons/common/github.svg';
+import googleImage from '@assets/img/icons/common/google.svg';
 
 export const AuthCardHeader = () => {
   return (

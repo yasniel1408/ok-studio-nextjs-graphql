@@ -1,8 +1,10 @@
 import { gql, useMutation } from '@apollo/client';
 import IUserCredentials from '@interfaces/IUserCredentials';
-import { useRouter } from 'next/router';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { NextRouter, useRouter } from 'next/router';
 import useSaveUserStorage from './useSaveUserStorage';
+import useAuth from '../../context/hooks/useAuth';
+import { IAppContextInterface } from '../../context/types/IAppContextInterface';
 
 const LOGIN = gql`
   mutation Mutation($input: UserCredentials) {
@@ -12,9 +14,10 @@ const LOGIN = gql`
 
 const useLogin = () => {
   const [login, { data, loading, error }] = useMutation(LOGIN);
-  const router = useRouter();
   const { storageProcess } = useSaveUserStorage();
   const [rememberMe, setRememberMe] = useState(false);
+  const { setAuth }: IAppContextInterface = useAuth();
+  const router: NextRouter = useRouter();
 
   useEffect(() => {
     if (data) {
@@ -22,18 +25,16 @@ const useLogin = () => {
         authorization: data?.login,
         rememberMe,
       }).then(() => {
-        router.push(`/dashboard`);
+        setAuth(true);
+        router.push('/admin/dashboard');
       });
     }
-  }, [data, rememberMe, router, storageProcess]);
+  }, [data, rememberMe, router, setAuth, storageProcess]);
 
-  const userLogin = useCallback(
-    ({ email, password, rememberMe: rememberUser }: IUserCredentials) => {
-      login({ variables: { input: { email, password } } });
-      setRememberMe(rememberUser);
-    },
-    [login],
-  );
+  const userLogin = ({ email, password, rememberMe: rememberUser }: IUserCredentials) => {
+    login({ variables: { input: { email, password } } });
+    setRememberMe(rememberUser);
+  };
 
   return { userLogin, loading, error, data };
 };

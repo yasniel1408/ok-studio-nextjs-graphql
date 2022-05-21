@@ -1,25 +1,34 @@
-/* eslint-disable react/destructuring-assignment */
 import React, { createRef, useEffect } from 'react';
 import { NextRouter, useRouter } from 'next/router';
 import { Container } from 'reactstrap';
 import Sidebar from '@components/Sidebar/Sidebar';
 import AdminNavbar from '@components/Navbars/AdminNavbar';
 import AdminFooter from '@components/Footers/AdminFooter';
+import useVerifyToken from '@hooks/auth/useVerifyToken';
+import useLogout from '@hooks/auth/useLogout';
 import routes from '../utils/routes';
 import nextjsArgonBlack from '../assets/img/brand/nextjs_argon_black.png';
-import isLoggedIn from '@hooks/auth/helpers/isLoggedIn';
-import useLogout from '@hooks/auth/useLogout';
+import useAuth from '../context/hooks/useAuth';
 
 function Admin(props: any) {
   const router: NextRouter = useRouter();
   const mainContentRef: any = createRef();
+  const { setAuth } = useAuth();
+
+  const { verifyToken } = useVerifyToken();
   const { logout } = useLogout();
 
   useEffect(() => {
-    if (!isLoggedIn()) {
-      logout();
-    }
-  }, []);
+    const load = async () => {
+      if (await verifyToken()) {
+        setAuth(true);
+      } else {
+        router.push('/auth/login');
+        logout();
+      }
+    };
+    load();
+  }, [logout, router, verifyToken]);
 
   useEffect(() => {
     if (document && document.scrollingElement) {

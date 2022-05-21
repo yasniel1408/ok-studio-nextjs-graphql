@@ -1,14 +1,18 @@
 import { useCallback } from 'react';
-import { useRouter } from 'next/router';
+import { NextRouter, useRouter } from 'next/router';
 import setLogout from './helpers/setLogout';
+import { IAppContextInterface } from '../../context/types/IAppContextInterface';
+import useAuth from '../../context/hooks/useAuth';
 
 const useLogout = () => {
-  const history = useRouter();
+  const { setAuth }: IAppContextInterface = useAuth();
+  const router: NextRouter = useRouter();
 
   const logout = useCallback(async () => {
     setLogout();
-    history.push('/auth/login');
-  }, [history]);
+    setAuth(false);
+    router.push('/auth/login');
+  }, [router, setAuth]);
 
   return { logout };
 };

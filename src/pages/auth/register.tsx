@@ -12,7 +12,7 @@ import {
   Col,
 } from 'reactstrap';
 import Auth from '../../layouts/Auth';
-import { AuthCardHeader } from './components/AuthCardHeader';
+import { AuthCardHeader } from '../../components/AuthCardHeader/AuthCardHeader';
 
 function Register() {
   return (

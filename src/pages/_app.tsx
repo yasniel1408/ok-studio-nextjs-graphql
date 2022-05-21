@@ -7,15 +7,16 @@ import { GlobalStyle } from '@components/GlobalStyles';
 import LoadingPage from '@components/LoadingPage';
 import { ReactChild } from 'react';
 import ApolloClientContainer from '@containers/ApolloClientContainer';
+import AuthProvider from '../context/AuthProvider';
 
-export default class MyApp extends App {
+class MyApp extends App {
   render() {
     const { Component, pageProps }: { Component: any; pageProps: any } = this.props;
 
     const Layout =
       Component.layout ||
       (({ children }: { children: ReactChild }) => {
-        return <>{children}</>;
+        return <div>{children}</div>;
       });
 
     return (
@@ -25,13 +26,17 @@ export default class MyApp extends App {
           <title>Ok-Studio</title>
         </Head>
         <ApolloClientContainer>
-          <Layout>
-            <GlobalStyle />
-            <LoadingPage />
-            <Component {...pageProps} />
-          </Layout>
+          <AuthProvider>
+            <Layout>
+              <GlobalStyle />
+              <LoadingPage />
+              <Component {...pageProps} />
+            </Layout>
+          </AuthProvider>
         </ApolloClientContainer>
       </>
     );
   }
 }
+
+export default MyApp;

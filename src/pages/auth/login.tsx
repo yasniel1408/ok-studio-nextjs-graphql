@@ -14,8 +14,8 @@ import {
 import Auth from '@layouts/Auth';
 import Error from '@components/Error/Error';
 import useLogin from '@hooks/auth/useLogin';
-import { useState } from 'react';
-import { AuthCardHeader } from './components/AuthCardHeader';
+import { SyntheticEvent, useState } from 'react';
+import { AuthCardHeader } from '../../components/AuthCardHeader/AuthCardHeader';
 
 const Login = () => {
   const { userLogin, loading, error } = useLogin();
@@ -24,9 +24,9 @@ const Login = () => {
   const password = useInputValue('admin123');
   const [rememberMe, setRememberMe] = useState(false);
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
-    await userLogin({ email: email.value, password: password.value, rememberMe });
+    userLogin({ email: email.value, password: password.value, rememberMe });
   };
 
   return (
@@ -37,7 +37,7 @@ const Login = () => {
           <div className="text-center text-muted mb-4">
             <small>Or sign in with credentials</small>
           </div>
-          <Form role="form" onSubmit={handleSubmit}>
+          <Form role="form" onSubmit={(e: SyntheticEvent) => handleSubmit(e)}>
             <FormGroup className="mb-3">
               <InputGroup className="input-group-alternative">
                 <InputGroup addonType="prepend">
